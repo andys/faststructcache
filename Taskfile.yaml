@@ -3,7 +3,7 @@
 version: '3'
 
 tasks:
-  doc: gomarkdoc > README.md
+  doc: gomarkdoc -o README.md -e .
   format: goimports -w=true ./
   vet: go vet './...'
   runtest: go test -v './...'
