@@ -1,0 +1,22 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  doc: gomarkdoc > README.md
+  format: goimports -w=true ./
+  vet: go vet './...'
+  runtest: go test -v './...'
+  lint: golangci-lint run
+
+  test:
+    deps:
+      - vet
+      - lint
+      - runtest
+  
+  default:
+    cmds:
+      - task: doc
+      - task: format
+      - task: test
